@@ -1,3 +1,3 @@
 #!/bin/bash
 echo "launching services..."
-python ./services/domoticzSensorParser.py localhost &
+python /root/projects/iotCero/services/domoticzSensorParser.py localhost &
