@@ -51,7 +51,7 @@ def on_message(client, userdata, msg):
         if "T_IMP" in data:
             out_payload = {"idx": sensor_dict_idx["T_IMP"]}
             out_payload["svalue"] = fix_temp(data["T_IMP"])
-            send(domoticz_in_topic,json.dumpA EXTERIORs(out_payload))
+            send(domoticz_in_topic,json.dumps(out_payload))
         if "BYPASS_STATUS" in data:
             out_payload = {"idx": sensor_dict_idx["BYPASS_STATUS"]}
             out_payload["svalue"] = fix_temp(data["BYPASS_STATUS"])
