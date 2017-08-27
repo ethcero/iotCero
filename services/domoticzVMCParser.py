@@ -64,11 +64,7 @@ def on_message(client, userdata, msg):
         if "ACTUAL_FLOW" in data:
             out_payload = {"idx": domoticz_dict_idx["ACTUAL_FLOW"]}
             out_payload["svalue"] = str(data["ACTUAL_FLOW"])
-            send(DOMOTICZ_IN_TOPIC,json.dumps(out_payload))
-        if "MODE_ACTIVATION" in data:
-            out_payload = {"idx": domoticz_dict_idx["MODE_ACTIVATION"], "command": "switchlight"}
-            out_payload["switchcmd"] = switchcmd_from_int_to_string(data["MODE_ACTIVATION"])
-            send(DOMOTICZ_IN_TOPIC,json.dumps(out_payload))
+            send(DOMOTICZ_IN_TOPIC,json.dumps(out_payload))        
 
 # commands to VMC
     if msg.topic == DOMOTICZ_OUT_TOPIC:
