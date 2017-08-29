@@ -20,10 +20,10 @@ GATEWAY_PUB_TOPIC_STANDBY = GATEWAY_PUB_TOPIC + "/standby"
 
 #associative array where sensor id and domoticz idx are defined
 domoticz_dict_idx = {}
-domoticz_dict_idx["T_INT"] = 33
-domoticz_dict_idx["T_OUT"] = 34
-domoticz_dict_idx["T_EXT"] = 36
-domoticz_dict_idx["T_IMP"] = 35
+domoticz_dict_idx["T_INT"] = 33 # inside temp
+domoticz_dict_idx["T_OUT"] = 36 # download temp
+domoticz_dict_idx["T_EXT"] = 34 # outside temp
+domoticz_dict_idx["T_IMP"] = 35 # impulsion temp
 domoticz_dict_idx["BYPASS_STATUS"] = 38
 domoticz_dict_idx["ACTUAL_FLOW"] = 42
 domoticz_dict_idx["MANUAL_BYPASS"] = 39
@@ -64,7 +64,7 @@ def on_message(client, userdata, msg):
         if "ACTUAL_FLOW" in data:
             out_payload = {"idx": domoticz_dict_idx["ACTUAL_FLOW"]}
             out_payload["svalue"] = str(data["ACTUAL_FLOW"])
-            send(DOMOTICZ_IN_TOPIC,json.dumps(out_payload))        
+            send(DOMOTICZ_IN_TOPIC,json.dumps(out_payload))
 
 # commands to VMC
     if msg.topic == DOMOTICZ_OUT_TOPIC:
